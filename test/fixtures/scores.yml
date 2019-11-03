@@ -1,0 +1,17 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  cant_green_bin: 1
+  cant_red_bin: 1
+  cant_grey_bin: 1
+  cant_blue_bin: 1
+  cant_yellow_bin: 1
+  cant_orange_bin: 1
+
+two:
+  cant_green_bin: 1
+  cant_red_bin: 1
+  cant_grey_bin: 1
+  cant_blue_bin: 1
+  cant_yellow_bin: 1
+  cant_orange_bin: 1
