@@ -3,14 +3,9 @@ class User < ApplicationRecord
 
   has_many :scores
 
+  USER_NOT_FOUND = {"message_error": "Usuario incorrecto"} 
+  
   #validates :name, presence: true
   #validates :email, presence: true, uniqueness: true
 
-  def type_user(user)
-    if user.name == nill then
-
-    else
-
-    end
-  end
 end

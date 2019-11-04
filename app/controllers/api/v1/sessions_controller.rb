@@ -33,13 +33,19 @@ module Api::V1
 
         def create
     #        puts("_#{params[:user][:email]}_#{params[:user][:password]}")
-            @user = User.find_by_email(params[:email])
-            if @user && @user.authenticate(params[:password])
-                session[:user_id] = @user.id
-                #puts params[:name]
-                render json: @user, status: :created
+            #@user = User.find_by_email(params[:email])
+            @user = User.find_by_name(params[:user][:name])
+            puts "Usuario: #{@user}"
+            if @user 
+                if @user.authenticate(params[:user][:password])
+                    session[:user_id] = @user.id
+                    
+                    render json: @user, status: :created
+                else
+                    render json: @user.errors, status: :unprocessable_entity
+                end
             else
-                render json: 
+                render json: User::USER_NOT_FOUND, status: :not_found
             end
         end
 
@@ -48,13 +54,11 @@ module Api::V1
             render json: @session
         end
 
-
         private 
             # Only allow a trusted parameter through.
             def user_params
-                params.require(:user).permit(:email, :password)
+                #params.require(:user).permit(:email, :password)
+                params.require(:user).permit(:name, :password)
             end
         end
-
-    end
 end
