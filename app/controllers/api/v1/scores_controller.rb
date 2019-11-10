@@ -48,8 +48,8 @@ module Api::V1
 
       # Only allow a trusted parameter "white list" through.
       def score_params
-        params.require(:score).permit(:cant_green_bin, :cant_red_bin, :cant_grey_bin,
-           :cant_blue_bin, :cant_yellow_bin, :cant_orange_bin, :user_id )
+        params.require(:score).permit(:ordinario, :peligroso, :papel,
+           :plastico, :bombillo, :pila, :value, :user_id)
       end
   end
 end

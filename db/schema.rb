@@ -10,21 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_31_235332) do
+ActiveRecord::Schema.define(version: 2019_11_10_203307) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "scores", force: :cascade do |t|
-    t.integer "cant_green_bin"
-    t.integer "cant_red_bin"
-    t.integer "cant_grey_bin"
-    t.integer "cant_blue_bin"
-    t.integer "cant_yellow_bin"
-    t.integer "cant_orange_bin"
+    t.integer "ordinario"
+    t.integer "peligroso"
+    t.integer "papel"
+    t.integer "plastico"
+    t.integer "bombillo"
+    t.integer "pila"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "user_id", null: false
+    t.integer "value"
     t.index ["user_id"], name: "index_scores_on_user_id"
   end
 
