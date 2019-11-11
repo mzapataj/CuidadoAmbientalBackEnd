@@ -2,6 +2,8 @@ module Api::V1
   class ScoresController < ApplicationController
     before_action :set_score, only: [:show, :update, :destroy]
 
+    #TEST commentary
+    
     # GET /scores
     def index
       @scores = Score.all
