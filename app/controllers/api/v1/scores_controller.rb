@@ -1,10 +1,11 @@
 module Api::V1
   class ScoresController < ApplicationController
+    before_action :set_user, only: [:create, :index, :show, :update, :destroy]
     before_action :set_score, only: [:show, :update, :destroy]
 
     # GET /scores
     def index
-      @scores = Score.all
+      @scores = @user.scores.all
 
       render json: @scores
     end
@@ -16,7 +17,8 @@ module Api::V1
 
     # POST /scores
     def create
-      @score = Score.new(score_params)
+      
+      @score = @user.scores.new(score_params)
 
       if @score.save
         puts api_v1_user_scores_url(@score)
@@ -43,13 +45,18 @@ module Api::V1
     private
       # Use callbacks to share common setup or constraints between actions.
       def set_score
-        @score = Score.find(params[:id])
+        @score = @user.scores.find(params[:id])
+      end
+
+      def set_user
+        @user = User.find(params[:user_id])
+        set_score    
       end
 
       # Only allow a trusted parameter "white list" through.
       def score_params
         params.require(:score).permit(:ordinario, :peligroso, :papel,
-           :plastico, :bombillo, :pila, :value, :user_id)
+           :plastico, :bombillo, :pila, :value)
       end
   end
 end
