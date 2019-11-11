@@ -51,8 +51,7 @@ module Api::V1
       end
 
       def set_user
-        @user = User.find(params[:user_id])
-        set_score    
+        @user = User.find(params[:user_id])    
       end
 
       # Only allow a trusted parameter "white list" through.
