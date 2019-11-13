@@ -1,10 +1,14 @@
 Rails.application.routes.draw do
 
+  #get 'score/index'
+  #get 'score/show'
   namespace :api do
     namespace :v1 do
       resources :users, only: [:index, :create, :destroy, :update, :login] do
-        resources :scores, only: [:index, :create, :show, :destroy] 
+        resources :users_scores, only: [:index, :create, :show, :destroy], path: :scores
+        resources :users_water_scores, path: :water_score
       end
+      resources :guests, only: [:index, :create, :destroy]
       resources :sessions, only: [:new, :create, :destroy]
       resources :scores, only: [:index, :show]
     end

@@ -1,13 +1,16 @@
                                Prefix Verb   URI Pattern                                                                              Controller#Action
-                   api_v1_user_scores GET    /api/v1/users/:user_id/scores(.:format)                                                  api/v1/scores#index
-                                      POST   /api/v1/users/:user_id/scores(.:format)                                                  api/v1/scores#create
-                    api_v1_user_score GET    /api/v1/users/:user_id/scores/:id(.:format)                                              api/v1/scores#show
-                                      DELETE /api/v1/users/:user_id/scores/:id(.:format)                                              api/v1/scores#destroy
+             api_v1_user_users_scores GET    /api/v1/users/:user_id/scores(.:format)                                                  api/v1/users_scores#index
+                                      POST   /api/v1/users/:user_id/scores(.:format)                                                  api/v1/users_scores#create
+              api_v1_user_users_score GET    /api/v1/users/:user_id/scores/:id(.:format)                                              api/v1/users_scores#show
+                                      DELETE /api/v1/users/:user_id/scores/:id(.:format)                                              api/v1/users_scores#destroy
                          api_v1_users GET    /api/v1/users(.:format)                                                                  api/v1/users#index
                                       POST   /api/v1/users(.:format)                                                                  api/v1/users#create
                           api_v1_user PATCH  /api/v1/users/:id(.:format)                                                              api/v1/users#update
                                       PUT    /api/v1/users/:id(.:format)                                                              api/v1/users#update
                                       DELETE /api/v1/users/:id(.:format)                                                              api/v1/users#destroy
+                        api_v1_guests GET    /api/v1/guests(.:format)                                                                 api/v1/guests#index
+                                      POST   /api/v1/guests(.:format)                                                                 api/v1/guests#create
+                         api_v1_guest DELETE /api/v1/guests/:id(.:format)                                                             api/v1/guests#destroy
                       api_v1_sessions POST   /api/v1/sessions(.:format)                                                               api/v1/sessions#create
                    new_api_v1_session GET    /api/v1/sessions/new(.:format)                                                           api/v1/sessions#new
                        api_v1_session DELETE /api/v1/sessions/:id(.:format)                                                           api/v1/sessions#destroy
