@@ -4,10 +4,19 @@ module Api::V1
 
     def index
       if params[:juego] == "1"
-        @scores = Score.select('DISTINCT ON (scores.user_id) scores.*').order('scores.user_id, scores.value DESC')
+        @scores = User.joins(:scores).select('DISTINCT ON (scores.user_id) users.name,scores.*')
+        .order('scores.user_id',value: :desc)
+        .sort_by{
+          |row| row[:value]
+        }.reverse
+        
+        #@scores = User.joins(:scores).select('MAX(scores.value) as value, users.id').group(:id).order('value DESC')
       end
       if params[:juego] == "2"
-        @scores = WaterScore.select('DISTINCT ON (water_scores.user_id) water_scores.*').order('water_scores.user_id, water_scores.value DESC')
+        @scores = User.joins(:water_scores)
+        .select('DISTINCT ON (water_scores.user_id) users.name, water_scores.*')
+        .order('water_scores.user_id, water_scores.value DESC')
+        .sort_by{|row| row[:value]}.reverse
       end
       render json: @scores
     end
